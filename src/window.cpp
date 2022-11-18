@@ -4,7 +4,7 @@
 #include <glabs/loader.hpp>
 #include <cpputils/debug.hpp>
 
-#include "window.hpp"
+#include <gezzy/window.hpp>
 
 Window::Window(const std::string_view title, glm::uvec2 size) : m_title(title), m_size(size) {
     logDebug("Initializing glfw");

@@ -21,5 +21,3 @@ public:
     void toggleFullScreen();
     ~Window();
 };
-
-inline Window window {"h"};
