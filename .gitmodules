@@ -1,9 +1,9 @@
 [submodule "cpputils"]
-	path = cpputils
+	path = lib/cpputils
 	url = https://github.com/astral-shining/cpputils.git
 [submodule "glabs"]
-	path = glabs
+	path = lib/glabs
 	url = https://github.com/astral-shining/glabs.git
 [submodule "ecs"]
-	path = ecs
+	path = lib/ecs
 	url = https://github.com/astral-shining/ecs.git
