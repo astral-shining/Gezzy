@@ -7,3 +7,9 @@
 [submodule "ecs"]
 	path = lib/ecs
 	url = https://github.com/astral-shining/ecs.git
+[submodule "lib/glfw"]
+	path = lib/glfw
+	url = https://github.com/glfw/glfw
+[submodule "lib/glm"]
+	path = lib/glm
+	url = https://github.com/g-truc/glm
