@@ -24,7 +24,7 @@ add_subdirectory(lib/glfw)
 
 add_subdirectory(lib/glm)
 
-add_subdirectory(src)
+file(GLOB_RECURSE GEZZY_SOURCES src/*.cpp)
 
 add_library(${PROJECT_NAME} STATIC ${GEZZY_SOURCES})
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
