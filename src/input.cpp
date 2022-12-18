@@ -1,11 +1,10 @@
 #include <GLFW/glfw3.h>
-#include <array>
 
 #include <gezzy/input.hpp>
-#include <gezzy/window.hpp>
+//#include <gezzy/window.hpp>
 #include <cpputils/types.hpp>
 
-static std::array<u8, 512> keys {};
+static u8 keys[512];
 
 static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
     keys[key] = action;

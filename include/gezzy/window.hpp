@@ -1,20 +1,23 @@
 #pragma once
-#include <string_view>
-#include <glm/vec2.hpp>
 
+#ifndef _glfw3_h_
 class GLFWwindow;
+#endif
 
 class Window {
     GLFWwindow* m_windowPtr;
-    std::string_view m_title;
-    glm::uvec2 m_size;
+    const char* m_title;
+    struct Size {
+        int width;
+        int height;
+    } m_size;
     //bool m_fullscreen;
     
 public:
-    Window(const std::string_view title="None", glm::uvec2 size = {640, 480});
+    Window(const char* title="None", Size size = {640, 480});
     bool update();
     void setSize(int w, int h);
-    glm::uvec2 getSize();
+    Size getSize();
     void setPos(int w, int h);
     void onResize(int w, int h);
     GLFWwindow* getGlfwWindowPtr() const;

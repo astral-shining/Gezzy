@@ -1,16 +1,16 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <stdexcept>
 #include <glabs/loader.hpp>
 #include <cpputils/debug.hpp>
+#include <cpputils/error.hpp>
 
 #include <gezzy/window.hpp>
 
-Window::Window(const std::string_view title, glm::uvec2 size) : m_title(title), m_size(size) {
+Window::Window(const char* title, Size size) : m_title(title), m_size(size) {
     logDebug("Initializing glfw");
 
     if (!glfwInit()) {
-        throw std::runtime_error("ERROR: glfwInit()");
+        abort("glfwInit()");
     }
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -20,10 +20,10 @@ Window::Window(const std::string_view title, glm::uvec2 size) : m_title(title), 
 
     logDebug("Creating glfw window");
 
-    m_windowPtr = glfwCreateWindow(size.x, size.y, title.data(), NULL, NULL);
+    m_windowPtr = glfwCreateWindow(size.width, size.height, m_title, NULL, NULL);
     if (!m_windowPtr) {
         glfwTerminate();
-        throw std::runtime_error("ERROR: creating window");
+        abort("Creating window");
     }
 
     glfwMakeContextCurrent(m_windowPtr);
@@ -49,10 +49,10 @@ bool Window::update() {
 
 void Window::setSize(int w, int h) {
     glfwGetWindowSize(m_windowPtr, &w, &h);
-    m_size = glm::uvec2(w, h);
+    m_size = {w, h};
 }
 
-glm::uvec2 Window::getSize() {
+Window::Size Window::getSize() {
     return m_size;
 }
 
@@ -61,7 +61,7 @@ void Window::setPos(int x, int y) {
 }
 
 void Window::onResize(int w, int h) {
-    m_size = glm::uvec2(w, h);
+    m_size = {w, h};
     glViewport(0, 0, w, h); // Update opengl width height
 }
 
