@@ -16,12 +16,8 @@ add_subdirectory(lib/glabs)
 add_subdirectory(lib/ecs)
 add_subdirectory(lib/glad)
 
-set(GLFW_BUILD_EXAMPLES OFF)
-set(GLFW_BUILD_TESTS OFF)
-set(BUILD_SHARED_LIBS OFF)
-set(GLFW_BUILD_DOCS OFF)
-set(GLFW_INSTALL OFF)
-add_subdirectory(lib/glfw)
+find_package(glfw3 REQUIRED)
+link_libraries(glfw)
 
 file(GLOB_RECURSE GEZZY_SOURCES src/*.cpp)
 
